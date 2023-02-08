@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir -p -m +x /temp/my_first_directory
+mkdir /temp/my_first_directory
