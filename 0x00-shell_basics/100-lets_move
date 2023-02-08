@@ -1,2 +1,2 @@
 #!/bin/bash
-cp [A-Z]* /temp/u
+mv [A-Z]* /temp/u
