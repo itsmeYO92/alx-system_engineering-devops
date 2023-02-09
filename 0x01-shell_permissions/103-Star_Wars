@@ -1,2 +1,2 @@
 #!/bin/bash
-./'StarWars IV'
+sudo ./'StarWars IV'
