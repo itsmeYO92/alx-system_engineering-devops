@@ -1,0 +1,2 @@
+#!/bin/bash
+grep bin /etx/passwd | wc -l
