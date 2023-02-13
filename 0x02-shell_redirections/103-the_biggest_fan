@@ -1,0 +1,2 @@
+#!/bin/bash
+tail -n +2 | cut -d" " -f 1 | sort | uniq -c | sort -r | rev | cut -f 1 -d ' '| rev

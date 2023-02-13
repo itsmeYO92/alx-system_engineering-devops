@@ -1,0 +1,10 @@
+host    logname time    method  url     response        bytes
+in24.inetnebr.com       -       807249601       GET     /shuttle/missions/sts-68/news/sts-68-mcc-05.txt 200     1839
+uplherc.upl.com -       807249607       GET     /       304     0
+uplherc.upl.com -       807249608       GET     /images/ksclogo-medium.gif      304     0
+uplherc.upl.com -       807249608       GET     /images/MOSAIC-logosmall.gif    304     0
+uplherc.upl.com -       807249608       GET     /images/USA-logosmall.gif       304     0
+ix-esc-ca2-07.ix.netcom.com     -       807249609       GET     /images/launch-logo.gif 200     1713
+uplherc.upl.com -       807249610       GET     /images/WORLD-logosmall.gif     304     0
+slppp6.intermind.net    -       807249610       GET     /history/skylab/skylab.html     200     1687
+piweba4y.prodigy.com    -       807249610       GET     /images/launchmedium.gif        200     11853
