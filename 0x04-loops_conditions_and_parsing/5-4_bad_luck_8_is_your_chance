@@ -8,7 +8,7 @@ do
 		echo "good luck"
 	elif [ $i = 4 ]
 	then
-		echo "bad lcuk"
+		echo "bad luck"
 	else
 		echo "Best School"
 	fi
