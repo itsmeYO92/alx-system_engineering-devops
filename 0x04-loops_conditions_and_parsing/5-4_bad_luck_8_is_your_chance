@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#displays Best School 10 times using while printing bad/good luck in 4th/8th iteration.
+i=1
+while [ $i -le 10 ]
+do
+	if [ $i = 8 ]
+	then
+		echo "good luck"
+	elif [ $i = 4 ]
+	then
+		echo "bad lcuk"
+	else
+		echo "Best School"
+	fi
+	i=$((i + 1))
+done
