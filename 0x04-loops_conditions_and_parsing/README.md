@@ -16,7 +16,7 @@ This is a directory for the **Loops, conditions and parsing** project's tasks, i
 ## Requirements
 - All your files will be interpreted on Ubuntu 20.04 LTS
 - All your Bash script files must be executable
-- You are not allowed to use `awk`
+- You are not allowed to use `awk` except you are told otherwise
 - Your Bash script must pass `Shellcheck (version 0.7.0)` without any error
 - The first line of all your Bash scripts should be exactly `#!/usr/bin/env bash`
 - The second line of all your Bash scripts should be a comment explaining what is the script doing
