@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#displays the files in the current directory
+for i in *;
+do
+	var=$(find . -name "$i" | cut -d '/' -f 2 | cut -d '-' -f 2)
+	echo "$var"
+done
