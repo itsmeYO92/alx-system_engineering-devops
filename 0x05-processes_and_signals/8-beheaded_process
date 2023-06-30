@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# displays infinty and beyond indefinitely
+pkill -f "7-highlander" --signal SIGKILL
+
