@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-# displays PID of the current script in runtime
+# displays PID of all the processes
 ps axu --forest
