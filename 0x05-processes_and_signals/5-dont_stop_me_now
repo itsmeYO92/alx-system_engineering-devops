@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# displays infinty and beyond indefinitely
+i=$(pgrep -f "4-to_infinity_and_beyond")
+kill "$i"
