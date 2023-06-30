@@ -7,4 +7,4 @@ This repository is a workspace for the tasks and projects related to **System En
   - TO BE ADDED SOON...
 ## Credits
 This work is *done*, *owned* and *maintained* *by* ***ayoub aboutarbouch***
-This readme file was copied from repository [@saadout1](https://twitter.com/saadout1)
+This readme file was copied from [@saadout1](https://twitter.com/saadout1)
