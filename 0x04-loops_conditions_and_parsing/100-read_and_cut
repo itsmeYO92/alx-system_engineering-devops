@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# read /etc/passwd and parse username id and path
+file="/etc/passwd"
+while read -r line;
+do
+	echo "$line" | cut -d: -f 1,3,7
+done < $file
