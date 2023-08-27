@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+#this script will contect to the server with ubuntu as a username
 ssh ubuntu@100.25.2.189 -i ~/.ssh/school
