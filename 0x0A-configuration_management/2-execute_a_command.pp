@@ -1,5 +1,4 @@
-#this puppet script installs the package flask from pip3
+#this puppet script executes a command
 exec { 'kill':
-    command => 'pkill -f killmenow',
-    path    => ['usr/bin', '/usr/sbin'],
+    command => '/bin/pkill -f "killmenow"',
 }
