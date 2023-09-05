@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Installs nginx server on the server
+
+new_string_404="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+string_for_replacement="server_name _;\n\tadd_header X-Served-By \$hostname;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
+
+apt-get update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
+service nginx start
+
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+sudo sed -i "s/listen 80 default_server;/$new_string_404/" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
