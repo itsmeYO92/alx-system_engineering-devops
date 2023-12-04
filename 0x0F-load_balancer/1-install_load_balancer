@@ -13,8 +13,8 @@ frontend haproxy-main
 
 backend nginx_webservers
     balance roundrobin
-    server 276248-web-01	35.153.33.41:80 check
-    server 276248-web-02	54.90.42.207:80 check
+    server 276248-web-01	34.232.71.74:80 check
+    server 276248-web-02	100.25.34.189:80 check
 "
 
 sudo echo "$configuration" >> /etc/haproxy/haproxy.cfg
