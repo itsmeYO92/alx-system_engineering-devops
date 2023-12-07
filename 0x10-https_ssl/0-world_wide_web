@@ -3,8 +3,8 @@
 
 get_records () {
     answer=$(dig "$1" | grep "ANSWER SECTION" -A1 | tail -1)
-    record=$(echo "$answer" | cut -f 4)
-    destination=$(echo "$answer" | cut -f 5)
+    record=$(echo "$answer" | awk '{print $4}')
+    destination=$(echo "$answer" | awk '{print $5}')
 
     echo "The subdomain $1 is a $record record and points to $destination"
 }
