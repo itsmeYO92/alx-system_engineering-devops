@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#This script restarts the nginx server
+
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
