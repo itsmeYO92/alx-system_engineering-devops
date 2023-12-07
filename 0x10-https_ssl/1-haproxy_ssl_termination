@@ -1,0 +1,68 @@
+global
+    daemon
+    # Set this to your desired maximum connection count.
+    maxconn 2048
+    # https://cbonte.github.io/haproxy-dconv/configuration-1.5.html#3.2-tune.ssl.default-dh-param
+    # bit setting for Diffie - Hellman key size.
+    tune.ssl.default-dh-param 2048
+
+defaults
+    option forwardfor
+    option http-server-close
+
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
+    errorfile 400 /etc/haproxy/errors/400.http
+    errorfile 403 /etc/haproxy/errors/403.http
+    errorfile 408 /etc/haproxy/errors/408.http
+    errorfile 500 /etc/haproxy/errors/500.http
+    errorfile 502 /etc/haproxy/errors/502.http
+    errorfile 503 /etc/haproxy/errors/503.http
+    errorfile 504 /etc/haproxy/errors/504.http
+
+# In case it's a simple http call, we redirect to the basic backend server
+# which in turn, if it isn't an SSL call, will redirect to HTTPS that is
+# handled by the frontend setting called 'www-https'.
+frontend www-http
+    # Redirect HTTP to HTTPS
+    bind *:80
+    # Adds http header to end of end of the HTTP request
+    reqadd X-Forwarded-Proto:\ http
+    # Sets the default backend to use which is defined below with name 'www-backend'
+    default_backend www-backend
+
+# If the call is HTTPS we set a challenge to letsencrypt backend which
+# verifies our certificate and than direct traffic to the backend server
+# which is the running hugo site that is served under https if the challenge succeeds.
+frontend www-https
+    # Bind 443 with the generated letsencrypt cert.
+    bind *:443 ssl crt /etc/haproxy/certs/www.itsmeyo92.tech.pem
+    # set x-forward to https
+    reqadd X-Forwarded-Proto:\ https
+    # set X-SSL in case of ssl_fc <- explained below
+    http-request set-header X-SSL %[ssl_fc]
+    # Select a Challenge
+    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+    # Use the challenge backend if the challenge is set
+    use_backend letsencrypt-backend if letsencrypt-acl
+    default_backend www-backend
+
+backend www-backend
+   # Redirect with code 301 so the browser understands it is a redirect. If it's not SSL_FC.
+   # ssl_fc: Returns true when the front connection was made via an SSL/TLS transport
+   # layer and is locally deciphered. This means it has matched a socket declared
+   # with a "bind" line having the "ssl" option.
+   redirect scheme https code 301 if !{ ssl_fc }
+   # Server for the running hugo site.
+   balance roundrobin
+   server 276248-web-01 34.232.71.74:80 check
+   server 276248-web-02 100.25.34.189:80 check
+
+backend letsencrypt-backend
+   # Lets encrypt backend server
+   server letsencrypt 127.0.0.1:54321
