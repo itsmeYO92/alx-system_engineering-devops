@@ -2,7 +2,7 @@
 # Recon a domain name and its subdomains
 
 get_records () {
-    answer=$(dig "$1" | grep "ANSWER SECTION" -A1 | tail -1)
+    answer=$(dig "${1}.$2" | grep "ANSWER SECTION" -A1 | tail -1)
     record=$(echo "$answer" | awk '{print $4}')
     destination=$(echo "$answer" | awk '{print $5}')
 
@@ -14,11 +14,11 @@ subs=("www" "lb-01" "web-01" "web-02")
 if [ "$#" -le 1 ]; then
     for sub in "${subs[@]}"
     do
-        get_records "${sub}.$1"
+        get_records "$sub" "$1"
     done
 else
     for sub in "${@:2}"
     do
-        get_records "${sub}.$1"
+        get_records "$sub" "$1"
     done    
 fi
